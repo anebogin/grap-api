@@ -15,8 +15,10 @@
 
 == API
 - List stored urls:
+
   GET /api/v1/targets
   Response format is:
+  
   [
     {
 	"id":7,"target_url":"https://en.wikipedia.org/wiki/Main_Page",
@@ -60,6 +62,7 @@
 
 - Return an information for selected url:
   GET /api/v1/targets/<ID>
+
   Response format is:
   {	
     "id":13,
@@ -68,4 +71,5 @@
     "updated_at":"2016-11-28T20:39:23.302Z",
     "contents":[{"id":4511,"data":null,"data_type":"a"},.....]
   }
+
   Or error: {errors: 'Target not found!'}
