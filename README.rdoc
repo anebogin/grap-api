@@ -1,25 +1,17 @@
 = README
 
 == Setup instructions
-
-	bundle install
-
-	rake db:create
+  bundle install
+  rake db:create
 
 == Run server
-
-	rails server
+  rails server
 
 == Testing
-
-	rake db:migrate RAILS_ENV=test
-
-	gem install rspec
-
-	gem install rspec-core
-
-	rspec spec
-	
+  rake db:migrate RAILS_ENV=test
+  gem install rspec
+  gem install rspec-core
+  rspec spec
 
 == API
 - List stored urls:
