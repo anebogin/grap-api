@@ -80,13 +80,16 @@ class Api::V1::TargetsController < ApplicationController
     params.require(:target).permit(:target_url)
   end
 
+  # Should be moved into helpers
   SCHEMES = %w(http https)
 
+  # Should be moved into helpers
   def valid_url?(target_url)
     parsed = Addressable::URI.parse(target_url) or return false
     SCHEMES.include?(parsed.scheme)
   end
 
+  # Should be moved into helpers
   def parse_url
     doc = Nokogiri::HTML(open(@target.target_url))
     doc.css('a, h1, h2, h3').each do |el|
