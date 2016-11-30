@@ -1,0 +1,62 @@
+== README
+
+* Setup instructions
+<tt>bundle install</tt>
+<tt>rake db:create</tt>
+
+* Run server
+<tt>rails server</tt>
+
+* Testing
+<tt>rake db:migrate RAILS_ENV=test</tt>
+<tt>gem install rspec</tt>
+<tt>gem install rspec-core</tt>
+<tt>rspec spec</tt>
+
+* API
+List stored urls:
+GET /api/v1/targets
+
+List tag data for a url:
+GET /api/v1/targets/<ID>
+Rsponse format is:
+[
+	{
+		"id":7,
+		"target_url":"https://en.wikipedia.org/wiki/Main_Page",
+		"created_at":"2016-11-28T20:29:46.410Z",
+		"updated_at":"2016-11-28T20:29:46.410Z"
+	},
+	............
+]
+Or error: {errors: 'Target not found!'}
+
+Add the new url and parse content:
+POST /api/v1/targets
+Parameters in JSON format, example:
+{"target":{"target_url":"https://en.wikipedia.org/wiki/Main_Page"}}
+Returns created url item:
+{
+	"id":15,
+	"target_url":"https://en.wikipedia.org/wiki/Main_Page",
+	"created_at":"2016-11-30T13:32:52.843Z",
+	"updated_at":"2016-11-30T13:32:52.843Z"
+}
+Or error: {errors: 'Invalid URL!'}
+
+Delete an url with all connected data:
+DELETE /api/v1/targets/<ID>
+If ok then returns empty response, or error:
+{"errors":"Target not found!"}
+
+Return an information for selected url:
+GET /api/v1/targets/<ID>
+Response format is:
+{	
+	"id":13,
+	"target_url":"https://en.wikipedia.org/wiki/Main_Page",
+	"created_at":"2016-11-28T20:39:23.302Z",
+	"updated_at":"2016-11-28T20:39:23.302Z",
+	"contents":[{"id":4511,"data":null,"data_type":"a"},.....]
+}
+Or error: {errors: 'Target not found!'}
